@@ -15,7 +15,10 @@ do
         cd ${dir}
         res=`git status --porcelain`
         # if res is empty, all is clean with git
-        if [ "$res" = "" ]; then
+        if [ "$res" == "" ]; then
+            if [ "$1" == "pull" ]; then
+                git pull
+            fi
             if $linux; then
                 echo -e "  \e[92m\e[0m\e[94m ${name}\e[0m"
             else
